@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloock&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -5,9 +6,10 @@
   --foreground: #171717;
 }
 
-@theme inline {
+@theme{
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-gloock: "Gloock", serif;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
