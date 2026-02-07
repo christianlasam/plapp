@@ -14,7 +14,7 @@ export default function Dashboard() {
             Plapp
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link href="/login">Analyze Form</Link>
+            <Link href="/analyze">Analyze Form</Link>
           </Button>
         </ButtonGroup>
       </div>
