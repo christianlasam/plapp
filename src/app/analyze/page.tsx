@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
@@ -18,24 +21,15 @@ import {
   CardContent,
 } from "@/components/ui/card";
 
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
+import { selectLift } from "../../../lib/lifts";
+import NavButtons from "@/components/ui/nav-buttons";
 
 export default function Analyze() {
+  const [lift, setLift] = useState("");
   return (
     <div className="flex flex-col min-h-screen">
       <div className="flex flex-col justify-center items-center p-6">
-        <ButtonGroup>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/login">Program</Link>
-          </Button>
-          <Button variant="outline" size="lg" className="font-gloock text-2xl">
-            Plapp
-          </Button>
-          <Button asChild variant="outline" size="lg">
-            <Link href="/analyze">Analyze Form</Link>
-          </Button>
-        </ButtonGroup>
+         <NavButtons active={2} />
         <Card className="flex w-full max-w-sm">
           <CardHeader>
             <CardTitle>Upload Video</CardTitle>
@@ -43,6 +37,7 @@ export default function Analyze() {
           <CardContent>
             <form>
               <input
+                id="video"
                 type="file"
                 accept="video/*"
                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
@@ -50,7 +45,7 @@ export default function Analyze() {
             </form>
           </CardContent>
           <CardFooter className="flex-col gap-2">
-            <Select>
+            <Select onValueChange={setLift} value={lift}>
               <SelectTrigger className="w-full max-w-48">
                 <SelectValue placeholder="Select a Workout" />
               </SelectTrigger>
@@ -62,7 +57,7 @@ export default function Analyze() {
                 </SelectGroup>
               </SelectContent>
             </Select>
-            <Button type="submit" className="w-full">
+            <Button type="submit" className="w-full" onClick={() => selectLift(lift)}>
               Upload
             </Button>
           </CardFooter>
