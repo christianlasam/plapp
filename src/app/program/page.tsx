@@ -28,12 +28,6 @@ export default function Program() {
       <div className="flex justify-center items-center p-6">
         <NavButtons active={1} />
       </div>
-      <div className="flex justify-center items-center p-6">
-        <Button>Create Program</Button>
-      </div>
-      <div className="flex justify-center items-center p-6">
-        <Button>View Existing Programs</Button>
-      </div>
       <ProgramTable />
     </div>
   );
@@ -51,54 +45,59 @@ function ProgramTable() {
   };
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>Workout</TableHead>
-          <TableHead>Variation</TableHead>
-          <TableHead>RPE</TableHead>
-          <TableHead>Reps</TableHead>
-          <TableHead>Sets</TableHead>
-          <TableHead>Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {rows.map(
-          (row) =>
-            row.type === 1 && (
-              <ProgramRow
-                key={row.id}
-                type={row.type}
-                onDelete={() => deleteRow(row.id)}
-              />
-            ),
-        )}
-        <TableRow>
-          <TableCell colSpan={6}>
-            <Button className="w-full" onClick={() => addRow(1)}>
-              Add SBD Row
-            </Button>
-          </TableCell>
-        </TableRow>
-        {rows.map(
-          (row) =>
-            row.type === 2 && (
-              <ProgramRow
-                key={row.id}
-                type={row.type}
-                onDelete={() => deleteRow(row.id)}
-              />
-            ),
-        )}
-        <TableRow>
-          <TableCell colSpan={6}>
-            <Button className="w-full" onClick={() => addRow(2)}>
-              Add Accessory Row
-            </Button>
-          </TableCell>
-        </TableRow>
-      </TableBody>
-    </Table>
+    <>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Workout</TableHead>
+            <TableHead>Variation</TableHead>
+            <TableHead>RPE</TableHead>
+            <TableHead>Reps</TableHead>
+            <TableHead>Sets</TableHead>
+            <TableHead>Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {rows.map(
+            (row) =>
+              row.type === 1 && (
+                <ProgramRow
+                  key={row.id}
+                  type={row.type}
+                  onDelete={() => deleteRow(row.id)}
+                />
+              ),
+          )}
+          <TableRow>
+            <TableCell colSpan={6}>
+              <Button className="w-full" onClick={() => addRow(1)}>
+                Add SBD Row
+              </Button>
+            </TableCell>
+          </TableRow>
+          {rows.map(
+            (row) =>
+              row.type === 2 && (
+                <ProgramRow
+                  key={row.id}
+                  type={row.type}
+                  onDelete={() => deleteRow(row.id)}
+                />
+              ),
+          )}
+          <TableRow>
+            <TableCell colSpan={6}>
+              <Button className="w-full" onClick={() => addRow(2)}>
+                Add Accessory Row
+              </Button>
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      <div className="flex justify-center items-center p-6">
+        <Button onClick={() => console.log(rows)}>Save Program</Button>
+      </div>
+    </>
   );
 }
 

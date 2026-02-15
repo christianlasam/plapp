@@ -8,6 +8,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { verify_login } from "./actions";
 
 export default function Login() {
   return (
@@ -18,15 +19,11 @@ export default function Login() {
           <CardTitle>Login to your account</CardTitle>
         </CardHeader>
         <CardContent>
-          <form>
+          <form id="login" action={verify_login}>
             <div className="flex flex-col gap-6">
               <div className="grid gap-2">
                 <Label htmlFor="email">Username</Label>
-                <Input
-                  id="username"
-                  type="username"
-                  required
-                />
+                <Input id="username" type="username" name="username" required />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
@@ -38,13 +35,13 @@ export default function Login() {
                     Forgot your password?
                   </a>
                 </div>
-                <Input id="password" type="password" required />
+                <Input id="password" type="password" name="password" required />
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex-col gap-2">
-          <Button type="submit" className="w-full">
+          <Button type="submit" form="login" className="w-full">
             Login
           </Button>
           <Button variant="outline" className="w-full">
