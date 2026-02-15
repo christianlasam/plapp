@@ -12,7 +12,7 @@ export default function Landing() {
           <Link href="/login">Sign In</Link>
         </Button>
         <Button asChild variant="outline" size="lg">
-          <Link href="/login">Create Account</Link>
+          <Link href="/create_account">Create Account</Link>
         </Button>
       </ButtonGroup>
     </div>
