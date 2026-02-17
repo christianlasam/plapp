@@ -12,9 +12,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { verify_login } from "./actions";
 import { useActionState } from "react";
+import { getUser } from "@/src/app/auth/actions";
 import ErrorAlert from "@/components/ui/error-alert";
+import { useEffect } from "react";
 
 export default function Login() {
+  useEffect(() => {
+    getUser();
+  }, []);
   const [state, formAction, isPending] = useActionState(
     verify_login,
     undefined,

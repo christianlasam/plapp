@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ButtonGroup } from "@/components/ui/button-group";
+import { getUser } from "@/src/app/auth/actions";
 
-export default function Landing() {
+export default async function Landing() {
+  await getUser();
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
       <h1 className="text-9xl pb-5 font-gloock text-center">Plapp</h1>

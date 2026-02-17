@@ -1,5 +1,4 @@
 "use client";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
   Card,
   CardHeader,
@@ -12,9 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { verify_create } from "./actions";
 import { useActionState } from "react";
+import { getUser } from "@/src/app/auth/actions";
 import ErrorAlert from "@/components/ui/error-alert";
+import { useEffect } from "react";
 
 export default function Create_Account() {
+  useEffect(() => {
+    getUser();
+  }, []);
   const [state, formAction, isPending] = useActionState(
     verify_create,
     undefined,

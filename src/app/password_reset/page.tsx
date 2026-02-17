@@ -12,9 +12,13 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { reset } from "./actions";
 import ErrorAlert from "@/components/ui/error-alert";
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { getUser } from "@/src/app/auth/actions";
 
 export default function Reset() {
+  useEffect(() => {
+    getUser();
+  }, []);
   const [state, formAction, isPending] = useActionState(reset, undefined);
   return (
     <div className="flex flex-col justify-center items-center min-h-screen">
