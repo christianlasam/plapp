@@ -12,21 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { verify_login } from "./actions";
 import { useActionState } from "react";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { InfoIcon } from "lucide-react";
-
-function ErrorAlert({ state }: { state: any }) {
-  if (state) {
-    return (
-      <Alert variant="destructive" className="w-full max-w-sm">
-        <InfoIcon />
-        <AlertTitle>Error</AlertTitle>
-        <AlertDescription>{state}</AlertDescription>
-      </Alert>
-    );
-  }
-  return null;
-}
+import ErrorAlert from "@/components/ui/error-alert";
 
 export default function Login() {
   const [state, formAction, isPending] = useActionState(
